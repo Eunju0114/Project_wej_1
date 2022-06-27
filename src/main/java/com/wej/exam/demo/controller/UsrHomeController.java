@@ -13,17 +13,17 @@ public class UsrHomeController {
 		count = -1;
 	}
 	
-	@RequestMapping("/usr/home/main4")
+	@RequestMapping("/usr/home/getCount")
 	@ResponseBody
-	public int showMain4() {
+	public int getCount() {
 		count ++;
 		return count;
 	}
 	
-	@RequestMapping("/usr/home/main5")
+	@RequestMapping("/usr/home/setCount")
 	@ResponseBody
-	public String showMain5() {
-		count = -1;
-		return "count 값이 초기화 되었습니다.";
+	public String setCount(int count) {
+		this.count = count;
+		return "count 값이 " + this.count + "으로 초기화 되었습니다.";
 	}
 }

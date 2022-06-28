@@ -13,48 +13,54 @@ import com.wej.exam.vo.Article;
 public class UsrArticleController {
 
 	private List<Article> articles;
-	private int id = 0;
-	
-	public UsrArticleController () {
+	private int articlesLastId;
+
+	public UsrArticleController() {
+		articlesLastId = 0;
 		articles = new ArrayList<>();
+
 		makeTestData();
 	}
-	
-	
+
 	private void makeTestData() {
 
-		for(int i = 1; i <=10; i++){
-			id ++;
-			String title ="제목" + i;
-			String body ="내용" + i;
-			
-			Article article = new Article(id, title, body);
-			
-			articles.add(article);
-			
+		for (int i = 1; i <= 10; i++) {
+
+			String title = "제목" + i;
+			String body = "내용" + i;
+
+			writeArticle(title, body);
+
 		}
-		
+
 	}
 
+	public Article writeArticle(String title, String body) {
+
+		int id = articlesLastId + 1;
+		Article article = new Article(id, title, body);
+
+		articles.add(article);
+		articlesLastId = id;
+		
+		return article;
+	}
 
 	@RequestMapping("/usr/article/doAdd")
 	@ResponseBody
 	public Article doAdd(String title, String body) {
 
-		id ++;
-		Article article = new Article(id, title, body);		
-		articles.add(article);
-		
+		Article article = writeArticle(title, body);
+
 		return article;
 	}
-	
 
 	@RequestMapping("/usr/article/getArticles")
 	@ResponseBody
 	public List<Article> getArticles() {
 		return articles;
 	}
-	
+
 	@RequestMapping("/usr/article/deleteArticle")
 	@ResponseBody
 	public String deleteArticle(int id) {
@@ -62,4 +68,3 @@ public class UsrArticleController {
 		return id + "번 게시물을 삭제하였습니다.";
 	}
 }
-

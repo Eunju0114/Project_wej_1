@@ -14,8 +14,8 @@ import com.wej.exam.vo.Article;
 @Mapper
 public interface ArticleRepository {
 
-	// @Insert("insert into article set title = #{title}, `body`= #{body}, regDate = now(), updateDate = now()")
-	public Article writeArticle(@Param("title") String title,@Param("body") String body);
+	@Insert("insert into article set title = #{title}, `body`= #{body}, regDate = now(), updateDate = now()")
+	public void writeArticle(@Param("title") String title,@Param("body") String body);
 
 	@Select("select * from article WHERE id = #{id}")
 	public Article getArticle(@Param("id") int id);
@@ -28,5 +28,8 @@ public interface ArticleRepository {
 
 	@Select("select * from article order by id desc")
 	public List<Article> getArticles();
+
+	@Select("select LAST_INSERT_ID()")
+	public int getLastInsertId();
 
 }

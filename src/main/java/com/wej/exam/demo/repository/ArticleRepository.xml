@@ -7,7 +7,8 @@
 	<insert id="writeArticle">
 		insert into article
 		set title = #{title},
-		`body`= #{body},
+		`body`=
+		#{body},
 		regDate = now(),
 		updateDate = now()
 	</insert>
@@ -15,13 +16,15 @@
 	<select id="getArticle" resultType="Article">
 		select *
 		from article
-		WHERE id = #{id}
+		WHERE id
+		= #{id}
 	</select>
 
 	<select id="getArticles" resultType="Article">
 		select *
 		from article
-		order by id DESC
+		order by
+		id DESC
 	</select>
 
 	<select id="getLastInsertId" resultType="int">
@@ -35,10 +38,16 @@
 	</delete>
 
 	<update id="modifyArticle">
-		update article
-		set title = #{title},
-		`body` = #{body},
-		updateDate = now()
+		UPDATE article
+		<set>
+			<if test="title != null and title != ''">
+				title = #{title},
+			</if>
+			<if test="body != null and body != ''">
+				`body` = #{body},
+			</if>
+		</set>
+		updateDate = NOW()
 		WHERE id = #{id}
 	</update>
 

@@ -7,4 +7,4 @@ spring:
      username: korad
      password: 1234
 mybatis:
-  type-aliases-package: com.wej.exam.vo
+  type-aliases-package: com.wej.exam.demo.vo

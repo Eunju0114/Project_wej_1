@@ -1,4 +1,4 @@
-package com.wej.exam.vo;
+package com.wej.exam.demo.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

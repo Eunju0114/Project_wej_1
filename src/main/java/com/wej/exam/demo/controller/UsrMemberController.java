@@ -53,9 +53,36 @@ public class UsrMemberController {
 			return joinRd;
 		}
 
-		Member member = memberService.getMemberById((int)joinRd.getData1());
+		Member member = memberService.getMemberById((int) joinRd.getData1());
 
 		return ResultData.newData(joinRd, member);
+	}
+
+	@RequestMapping("/usr/member/doLogin")
+	@ResponseBody
+	public Object doLogin(String loginId, String loginPw) {
+
+		if (Ut.empty(loginId)) {
+			return ResultData.from("F-1", "loginId(을)를 입력해주세요.");
+		}
+
+		if (Ut.empty(loginPw)) {
+			return ResultData.from("F-2", "loginPw(을)를 입력해주세요.");
+		}
+
+		Member member = memberService.getMemberByLoginId(loginId);
+		
+		
+		if (member == null) {
+			return ResultData.from("F-3", "존재하지 않는 로그인 아이디 입니다.");
+		}
+		
+		if(member.getLoginPw().equals(loginPw) == false) {
+			
+			return ResultData.from("F-4", "비밀번호 오류.");
+		}
+
+		return ResultData.from("S-1", Ut.f("%s님 환영합니다.", member.getNickname()));
 	}
 
 }

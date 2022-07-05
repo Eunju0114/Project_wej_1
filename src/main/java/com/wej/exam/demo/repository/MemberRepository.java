@@ -12,5 +12,7 @@ public interface MemberRepository {
 
 	int getLastInsertId();
 
-	Member getMemberById(int id);
+	Member getMemberById(@Param("id") int id);
+
+	Member getMemberByLoginId(@Param("loginId") String loginId);
 }

@@ -21,8 +21,14 @@
 	
 	<select id="getMemberById" resultType="Member">
 		select *
-		from `member`
-		where id = #{id};
+		from `member` AS M
+		where M.id = #{id};
+	</select>
+	
+	<select id="getMemberByLoginId" resultType="Member">
+		select *
+		from `member` AS M
+		where M.loginId = #{loginId};
 	</select>
 
 </mapper>

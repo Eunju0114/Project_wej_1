@@ -107,7 +107,7 @@ public class UsrArticleController {
 
 	@RequestMapping("/usr/article/doModify")
 	@ResponseBody
-	public ResultData<Article> doModify(HttpSession httpsession, int id, String title, String body) {
+	public ResultData doModify(HttpSession httpsession, int id, String title, String body) {
 		
 		boolean isLogined = false;
 		int loginedMemberId = 0;

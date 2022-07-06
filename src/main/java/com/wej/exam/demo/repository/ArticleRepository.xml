@@ -10,7 +10,8 @@
 		`body`=
 		#{body},
 		regDate = now(),
-		updateDate = now()
+		updateDate = now(),
+		memberId = #{memberId}
 	</insert>
 
 	<select id="getArticle" resultType="Article">

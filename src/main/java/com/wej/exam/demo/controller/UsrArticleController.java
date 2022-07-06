@@ -48,7 +48,7 @@ public class UsrArticleController {
 		int id = (int) writeArticleRd.getData1();
 
 		Article article = articleService.getArticle(id);
-		return ResultData.newData(writeArticleRd, article);
+		return ResultData.newData(writeArticleRd, "article", article);
 	}
 
 	@RequestMapping("/usr/article/getArticles")
@@ -56,7 +56,7 @@ public class UsrArticleController {
 	public ResultData getArticles() {
 		List<Article> articles = articleService.getArticles();
 
-		return ResultData.from("S-1", "게시물 리스트 입니다.", articles);
+		return ResultData.from("S-1", "게시물 리스트 입니다.","articles", articles);
 	}
 
 	@RequestMapping("/usr/article/getArticle")
@@ -69,7 +69,7 @@ public class UsrArticleController {
 			return ResultData.from("F-1", Ut.f("%d번 게시물이 존재하지 않습니다.", id));
 		}
 
-		return ResultData.from("S-1", Ut.f("%d번 게시물입니다.", id), article);
+		return ResultData.from("S-1", Ut.f("%d번 게시물입니다.", id),"article", article);
 
 	}
 
@@ -126,6 +126,10 @@ public class UsrArticleController {
 
 		if (article == null) {
 			return ResultData.from("F-1", Ut.f("%d번 게시물이 존재하지 않습니다.", id));
+		}
+		
+		if( article.getMemberId() !=  loginedMemberId) {
+			return ResultData.from("F-2", "권한이 없습니다.");
 		}
 		
 		ResultData actorCanModifyRd = articleService.actorCanModify(loginedMemberId, article);

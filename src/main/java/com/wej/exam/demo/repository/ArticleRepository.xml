@@ -22,10 +22,12 @@
 	</select>
 
 	<select id="getArticles" resultType="Article">
-		select *
-		from article
-		order by
-		id DESC
+		SELECT A.*,
+		M.nickname AS extra__writerName
+		FROM article AS A
+		LEFT JOIN member AS M
+		ON A.memberId = M.id
+		ORDER BY id DESC
 	</select>
 
 	<select id="getLastInsertId" resultType="int">

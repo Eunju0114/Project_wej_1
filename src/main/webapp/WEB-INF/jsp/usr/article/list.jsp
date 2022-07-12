@@ -6,6 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>뿌엥</title>
+<link rel="stylesheet" href="/resources/common.css" />
+<script src="resource/common.js" defer="defer"></script>
 </head>
 <body>
 
@@ -36,7 +38,7 @@
           <c:forEach var="article" items="${articles}">
           <tr>
             <td>${article.id}</td>
-            <td>${article.regDate}</td>
+            <td>${article.regDate.substring(3, 16)}</td>
             <td>${article.updateDate}</td>
             <td>${article.memberId}</td>
             <td><a href="../article/detail?id=${article.id}">${article.title}</a>

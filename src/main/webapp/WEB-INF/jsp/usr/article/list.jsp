@@ -1,28 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>뿌엥</title>
-<link rel="stylesheet" href="/resources/common.css" />
-<script src="resource/common.js" defer="defer"></script>
-</head>
-<body>
-
-  <h1>게시물 리스트 페이지</h1>
-
-  <header>
-    <a href="/">로고</a>
-  
-  
-  <ul>
-    <li><a href="/">홈</a></li>
-    <li><a href="/usr/article/list">리스트</a></li>
-  </ul>
-    
-  </header>
+<c:set var="pageTitle" value="게시물 " />
+<%@ include file="../common/head.jspf" %>
 
   <table border="1">
       <thead>
@@ -48,5 +27,4 @@
       </tbody>
   </table>
 
-</body>
-</html>
+<%@ include file="../common/foot.jspf" %>

@@ -13,7 +13,7 @@ import com.wej.exam.demo.vo.ResultData;
 
 @Controller
 public class UsrMemberController {
-
+ 
 	private MemberService memberService;
 
 	public UsrMemberController(MemberService memberService) {

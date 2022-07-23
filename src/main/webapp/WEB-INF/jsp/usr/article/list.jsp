@@ -2,11 +2,17 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="pageTitle" value="게시물 " />
 <%@ include file="../common/head.jspf"%>
-
 <section class="mt-5">
   <div class="container mx-auto px-3">
     <div class="table-box-type-1">
       <table>
+        <colgroup>
+          <col width="50"/>
+          <col width="150"/>
+          <col width="150"/>
+          <col width="150"/>
+          <col />
+        </colgroup>
         <thead>
           <tr>
             <th>번호</th>
@@ -24,7 +30,7 @@
               <td>${article.updateDate.substring(2, 16)}</td>
               <td>${article.extra__writerName}</td>
               <td>
-                <a class="btn-text-link" href="../article/detail?id=${article.id}">${article.title}</a>
+                <a class="btn-text-link"  href="../article/detail?id=${article.id}">${article.title}</a>
               </td>
             </tr>
           </c:forEach>
